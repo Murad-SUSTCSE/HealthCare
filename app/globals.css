@@ -5,6 +5,8 @@
 
 :root {
   --background: oklch(1 0 0);
+  /* Subtle tinted variant for very light panels */
+  --background-subtle: oklch(0.985 0.01 240);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -122,5 +124,36 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Light, subtle patient background */
+  .patient-bg {
+    background-image: linear-gradient(135deg,
+      oklch(1 0 0) 0%,
+      oklch(0.995 0.005 230) 18%,
+      oklch(0.99 0.008 240) 38%,
+      oklch(0.985 0.01 245) 70%,
+      oklch(0.98 0.012 250) 100%);
+    background-attachment: fixed;
+  }
+
+  /* Utility class for patient content surfaces (cards/sections) */
+  .patient-surface {
+    background: linear-gradient(145deg,#ffffff,oklch(0.985 0.01 240));
+    @apply border border-gray-100/70 shadow-sm rounded-xl;
+  }
+
+  /* Optional subtle separator accent */
+  .patient-section {
+    @apply relative;
+  }
+  .patient-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 15% 20%, oklch(0.99 0.01 250) 0%, transparent 60%),
+                radial-gradient(circle at 85% 75%, oklch(0.99 0.012 220) 0%, transparent 65%);
+    opacity: 0.35;
   }
 }

@@ -52,7 +52,7 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="flex">
       <Sidebar />
-      <main className="ml-64 flex-1 p-8 pt-20 bg-gray-50 dark:bg-gradient-to-br dark:from-[#0a0e1f] dark:via-[#0e1529] dark:to-[#121933] min-h-screen relative">
+  <main className="ml-64 flex-1 p-8 pt-20 min-h-screen relative">
         {/* Top Right Controls - Theme Toggle & Logout */}
         <div className="fixed top-4 right-4 z-50 flex gap-3 items-center">
           <ThemeToggle />
@@ -65,11 +65,13 @@ export default function DashboardLayout({ children }) {
           </Button>
         </div>
         
-        {/* Ambient Background Effects for Dark Mode */}
-        <div className="hidden dark:block absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Ambient Background to match Doctor Dashboard */}
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-[#0a0e1f] dark:via-[#0e1529] dark:to-[#121933]" />
+          {/* Animated orbs (light / dark) */}
+          <div className="absolute top-20 left-20 w-96 h-96 bg-emerald-300/30 dark:bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-300/30 dark:bg-teal-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-300/20 dark:bg-cyan-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
         
         <div className="relative z-10">{children}</div>
